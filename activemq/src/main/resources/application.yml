@@ -1,0 +1,11 @@
+spring:
+  activemq:
+    broker-url: tcp://127.0.0.1:61616?jms.useAsyncSend=true
+    user: admin
+    password: admin
+    close-timeout: 5000
+    in-memory: false
+    send-timeout: 3000
+    pool:
+      enabled: true
+      
