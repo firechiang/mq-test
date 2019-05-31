@@ -56,5 +56,6 @@
 
 	<modules>
 		<module>activemq</module>
+		<module>rocketmq</module>
 	</modules>
 </project>
