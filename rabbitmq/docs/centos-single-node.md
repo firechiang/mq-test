@@ -1,4 +1,4 @@
-#### 一、编译安装 Erlang 环境，编译好的 Erlang 源码可以直接拷贝到其他机器使用 （注意：RabbitMQ依赖Erlang环境，而且对版本有要求，具体版本对应请参照官网：https://www.rabbitmq.com/which-erlang.html）
+#### 一、编译安装 Erlang 环境，编译好的 Erlang 源码可以直接拷贝到其他机器使用 （注意：RabbitMQ依赖Erlang环境，而且对版本有要求，具体版本对应请[参照官网](https://www.rabbitmq.com/which-erlang.html)）
 ```bash
 $ cd /home/tools
 $ sudo yum install gcc glibc-devel make ncurses-devel openssl-devel autoconf # 安装编译工具（注意：编译时还需机器装有JDK）
