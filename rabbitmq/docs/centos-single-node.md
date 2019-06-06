@@ -38,4 +38,20 @@ ADVANCED_CONFIG_FILE=/etc/rabbitmq/advanced.config
 ```bash
 ```
 
+#### 四、修改[vi ~/.bashrc]配置环境变量
+```bash
+export RABBITMQ_HOME=/home/rabbitmq_server-3.7.15
+PATH=$PATH:$RABBITMQ_HOME/sbin                                               # linux以 : 号隔开，windows以 ; 号隔开
+
+$ source ~/.bashrc                                                           # （系统重读配置）在各个机器上执行使配置文件生效（实验：敲个elastic然后按Tab键，如果补全了说明配置成功了）
+$ echo $RABBITMQ_HOME
+```
+
+#### 五、启动和停止服务（注意：要在 /etc/hosts 文件里面配置好当前服务器的主机名和IP，否则 rabbitmqctl 命令将无法使用，当前服务器的主机名可使用 hostname 命令查看）
+```bash
+$ rabbitmq-server                                                            # 前台启动 RabbitMQ
+$ rabbitmq-server -detached                                                  # 后台启动 RabbitMQ
+$ rabbitmqctl shutdown && epmd -kill                                         # 停止 RabbitMQ 并且停止 Erlang 守护进程
+```
+
 
