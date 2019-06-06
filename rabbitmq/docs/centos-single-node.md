@@ -19,7 +19,7 @@ $ tar -xvf rabbitmq-server-generic-unix-3.7.15.tar.xz -C ../                 # �
 $ cd ../rabbitmq_server-3.7.15
 ```
 
-#### 三、修改配置文件（注意：配置文件都需要手动创建），官方配置说明：https://www.rabbitmq.com/configure.html
+#### 三、修改配置文件，[官方配置说明](https://www.rabbitmq.com/configure.html)（注意：配置文件都需要手动创建）
 ##### 3.1、修改[vi /home/rabbitmq_server-3.7.15/etc/rabbitmq/rabbitmq-env.conf]配置，[官方配置说明](https://www.rabbitmq.com/configure.html#environment-env-file-unix)
 ```bash
 # 覆盖节点名称
