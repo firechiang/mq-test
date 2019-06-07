@@ -28,3 +28,24 @@ $ halt().                                                                       
 $ cd /home/tools
 $ rpm -ivh rabbitmq-server-3.6.5-1.noarch.rpm                                   # 安装 RabbitMQ
 ```
+
+#### 五、修改[vi /usr/lib/rabbitmq/lib/rabbitmq_server-3.6.5/ebin/rabbit.app]
+```bash
+{loopback_users, [guest]}                                                       # 用户名和密码
+```
+
+#### 六、启动
+```bash
+$ service rabbitmq-server start                                                 # 启动  RabbitMQ 服务
+$ service rabbitmq-server stop && epmd -kill                                    # 启动  RabbitMQ 服务并且停止 Erlang 守护进程
+$ ps -ef | grep rabbit                                                          # 查看 RabbitMQ 进程信息
+```
+
+#### 七、安装插件（注意：安装插件时 RabbitMQ 必须是启动的否则无法安装）
+```bash
+# 查看 RabbitMQ 自带的插件列表
+$ rabbitmq-plugins list                                                         
+
+# 安装管理控制台插件，访问地址：http://192.168.229.133:15672，用户名和密码都是：guest，就是我们上面配置的
+$ rabbitmq-plugins enable rabbitmq_management                                   
+```
