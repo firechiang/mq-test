@@ -7,7 +7,7 @@ $ wget www.rabbitmq.com/releases/erlang/erlang-18.3-1.el7.centos.x86_64.rpm
 $ wget www.rabbitmq.com/releases/rabbitmq-server/v3.6.5/rabbitmq-server-3.6.5-1.noarch.rpm 
 ```
 
-#### 二、下载安装 Socat（注意：如果下面的地址下载不了，请使用[备用下载地址]()）
+#### 二、下载安装 Socat（注意：如果下面的地址下载不了，请使用[备用下载地址](https://github.com/firechiang/mq-test/raw/master/rabbitmq/data/socat-1.7.3.2-5.el7.lux.x86_64.rpm)），[编译 Socat 源码方式安装](https://github.com/firechiang/mq-test/tree/master/rabbitmq/docs/socat-src-install.md)
 ```bash
 $ cd /home/tools
 $ yum install tcp_wrappers
