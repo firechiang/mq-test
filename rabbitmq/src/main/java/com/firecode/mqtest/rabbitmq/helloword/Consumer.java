@@ -30,7 +30,7 @@ public class Consumer extends AbstractAmqpClient {
 		channel.basicConsume(queueName, true,consumer);
 		
 		while(true){
-			// 获取消息（注意：如果没有消息，这个会一直阻塞（有个参数可以设置等待时间，在超时））
+			// 获取消息（注意：如果没有消息，这个会一直阻塞（还有一个带参数的方法，可以设置等待超时时间））
 			Delivery nextDelivery = consumer.nextDelivery();
 			byte[] body = nextDelivery.getBody();
 			System.err.println("消费："+new String(body,StandardCharsets.UTF_8));
