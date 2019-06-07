@@ -41,7 +41,7 @@ $ service rabbitmq-server stop && epmd -kill                                    
 $ ps -ef | grep rabbit                                                          # 查看 RabbitMQ 进程信息
 ```
 
-#### 七、安装插件（注意：安装插件时 RabbitMQ 必须是启动的否则无法安装）
+#### 七、安装管理插件服务（注意：安装插件时 RabbitMQ 必须是启动的否则无法安装）
 ```bash
 # 查看 RabbitMQ 自带的插件列表
 $ rabbitmq-plugins list                                                         
