@@ -11,5 +11,14 @@
 	<artifactId>rabbitmq</artifactId>
 	<name>rabbitmq</name>
 	<dependencies>
+		<!-- <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency> -->
+		<dependency>
+			<groupId>com.rabbitmq</groupId>
+			<artifactId>amqp-client</artifactId>
+			<version>3.6.5</version>
+		</dependency>
 	</dependencies>
 </project>
