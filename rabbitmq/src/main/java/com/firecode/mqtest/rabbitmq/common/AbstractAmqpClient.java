@@ -46,7 +46,9 @@ public abstract class AbstractAmqpClient {
 		Map<String, Object>  proper = new HashMap<>();
 		// 消息过期时间
 		//proper.put("x-message-ttl", "30000");
-		// 消息的最大长度
+		// 队列最大长度
+		//proper.put("x-max-length", 30000);
+		// 队列数据最大长度
 	    //proper.put("x-max-length-bytes", 30000);
 		// 声明(创建)一个队列
 		/**
