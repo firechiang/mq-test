@@ -1,4 +1,4 @@
-package com.firecode.mqtest.rabbitmq.helloword.exchange.fanout;
+package com.firecode.mqtest.rabbitmq.feature.confirm_message;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -13,9 +13,7 @@ import com.rabbitmq.client.Envelope;
 import com.rabbitmq.client.ShutdownSignalException;
 
 /**
- * 
- * fanout类型的exchange(交换机)不处理任何RoutingKey(路由键)，只需要简单的将队列绑定到交换机,发送到交换机的消息都会被转发到与该交换机绑定的所有队列上，
- * 注意：fanout类型的Exchange(交换机)转发消息是最快的，性能是最好的
+ * 监听消息是否投递成功
  * 消费者
  * @author JIANG
  */
