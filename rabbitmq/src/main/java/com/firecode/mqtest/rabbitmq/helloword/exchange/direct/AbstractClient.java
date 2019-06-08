@@ -1,4 +1,4 @@
-package com.firecode.mqtest.rabbitmq.helloword.exchange_direct;
+package com.firecode.mqtest.rabbitmq.helloword.exchange.direct;
 
 import java.io.IOException;
 

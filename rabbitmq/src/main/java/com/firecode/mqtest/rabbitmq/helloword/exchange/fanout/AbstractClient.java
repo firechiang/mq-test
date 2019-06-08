@@ -1,4 +1,4 @@
-package com.firecode.mqtest.rabbitmq.helloword.exchange_fanout;
+package com.firecode.mqtest.rabbitmq.helloword.exchange.fanout;
 
 import java.io.IOException;
 
