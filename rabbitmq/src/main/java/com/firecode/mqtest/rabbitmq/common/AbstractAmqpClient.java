@@ -30,10 +30,15 @@ public abstract class AbstractAmqpClient {
 		factory.setPort(5672);
 		// 设置虚拟主机
 		factory.setVirtualHost("/");
+		// 是否自动重连
+		factory.setAutomaticRecoveryEnabled(true);
+		// 每3秒自动重连一次
+		factory.setNetworkRecoveryInterval(3000);
 		// 创建连接
 		connect = factory.newConnection();
 		// 创建通信管道
 		channel = connect.createChannel();
+		this.before();
 		// 声明(创建)一个队列
 		/**
 		 * queue        队列的名称
@@ -57,4 +62,7 @@ public abstract class AbstractAmqpClient {
 		channel.close();
 		connect.close();
 	}
+	
+	public void before() throws IOException{}
+	
 }

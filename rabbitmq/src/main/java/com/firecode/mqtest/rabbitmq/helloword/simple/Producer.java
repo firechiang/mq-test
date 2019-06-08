@@ -1,4 +1,4 @@
-package com.firecode.mqtest.rabbitmq.helloword;
+package com.firecode.mqtest.rabbitmq.helloword.simple;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
