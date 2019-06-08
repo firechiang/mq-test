@@ -1,4 +1,4 @@
-package com.firecode.mqtest.rabbitmq.helloword.simple;
+package com.firecode.mqtest.rabbitmq.helloword.message.simple;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -8,7 +8,7 @@ import org.junit.Test;
 import com.firecode.mqtest.rabbitmq.common.AbstractAmqpClient;
 
 /**
- * 生产者
+ * 简单消息生产者
  * @author JIANG
  */
 public class Producer extends AbstractAmqpClient {

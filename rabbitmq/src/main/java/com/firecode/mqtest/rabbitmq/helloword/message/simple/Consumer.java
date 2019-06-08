@@ -1,4 +1,4 @@
-package com.firecode.mqtest.rabbitmq.helloword.simple;
+package com.firecode.mqtest.rabbitmq.helloword.message.simple;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -12,7 +12,7 @@ import com.rabbitmq.client.QueueingConsumer.Delivery;
 import com.rabbitmq.client.ShutdownSignalException;
 
 /**
- * 消费者
+ * 简单消息消费者
  * @author JIANG
  */
 public class Consumer extends AbstractAmqpClient {
