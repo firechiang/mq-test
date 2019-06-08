@@ -11,7 +11,7 @@ import com.rabbitmq.client.AMQP;
 
 /**
  * 
- * 手动确认消息和是否重回队列
+ * 手动确认消息和是否重回队列（最尾端）
  * 
  * 生产者
  * @author JIANG

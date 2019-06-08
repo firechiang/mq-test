@@ -13,7 +13,7 @@ import com.rabbitmq.client.Envelope;
 import com.rabbitmq.client.ShutdownSignalException;
 
 /**
- * 手动确认消息和是否重回队列
+ * 手动确认消息和是否重回队列（最尾端）
  * 
  * 消费者
  * @author JIANG

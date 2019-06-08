@@ -1,6 +1,8 @@
 package com.firecode.mqtest.rabbitmq.common;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeoutException;
 
 import org.junit.After;
@@ -39,6 +41,13 @@ public abstract class AbstractAmqpClient {
 		// 创建通信管道
 		channel = connect.createChannel();
 		this.before();
+		
+		// 创建队列时指定一些属性（更详细的属性可参考控制台添加队列的那个位置）
+		Map<String, Object>  proper = new HashMap<>();
+		// 消息过期时间
+		//proper.put("x-message-ttl", "30000");
+		// 消息的最大长度
+	    //proper.put("x-max-length-bytes", 30000);
 		// 声明(创建)一个队列
 		/**
 		 * queue        队列的名称
@@ -47,7 +56,7 @@ public abstract class AbstractAmqpClient {
 		 * autoDelete   队列没有绑定exchange（交换机）是否自动删除消息
 		 * arguments    扩展参数
 		 */
-		DeclareOk queueDeclare = channel.queueDeclare(queueName, true, false, false, null);
+		DeclareOk queueDeclare = channel.queueDeclare(queueName, true, false, false, proper);
 		System.out.println("声明队列："+queueDeclare);
 	}
 	

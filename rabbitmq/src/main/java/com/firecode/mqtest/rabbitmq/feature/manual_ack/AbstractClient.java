@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import com.firecode.mqtest.rabbitmq.common.AbstractAmqpClient;
 /**
- * 手动确认消息和是否重回队列
+ * 手动确认消息和是否重回队列（最尾端）
  * 
  * 所有发送到 Direct类型的Exchange(交换机)的消息被转发到RoutingKey中指定的Queue(队列)上
  * @author JIANG
