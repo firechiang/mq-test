@@ -1,6 +1,8 @@
 server:
   port: 8080
 spring:
+  application:
+    name: mq-test-rabbit
   rabbitmq:
     addresses: 192.168.229.133:5672
     username: guest
@@ -32,5 +34,37 @@ spring:
           name: test.boot.queue.topic.user
           durable: false
         key: test.boot.queue.topic.*
+  # spring cloud stream 相关配置      
+  cloud:
+    stream:
+      binders:
+        # 生产端相关配置        
+        output_channel:
+          binder: rabbit_cluster                        # 集群环境的名称，可以随便起
+          destination: test.spring.exchange.topic.bean  # 交换机名称
+          group: test.spring.queue.topic.bean           # 队列名称 
+        # 消费端相关配置
+        input_channel:
+          binder: rabbit_cluster                        # 集群环境的名称，可以随便起
+          destination: test.spring.exchange.topic.bean  # 交换机名称
+          group: test.spring.queue.topic.bean           # 队列名称 
+          consumer:
+            concurrency: 5                              # 初始化时消费者数量
+            max-concurrency: 10                         # 初始化时最大消费者数量
+            requeue-rejected: false                     # false不丢弃时消息将会入死信队列，注意：死信队列要配置的
+            acknowledge-mode: manual                    # 手动确认消息
+            recovery-interval: 3000                     # 自动重连间隔时间
+            durable-subscription: false                 # 启用次持久化订阅
+        # 集群环境的相关配置（注意：这个名字要和spring.cloud.stream.binders.output_channel.binder=rabbit_cluster对应）
+        rabbit_cluster:                 
+          type: rabbit                                  # MQ的类型 
+          environment:
+            spring:
+              rabbitmq:
+                addresses: 192.168.229.133:5672
+                virtual-host: /
+                username: guest
+                password: guest
+            
             
       
