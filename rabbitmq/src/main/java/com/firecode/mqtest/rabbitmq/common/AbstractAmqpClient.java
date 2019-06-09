@@ -53,7 +53,7 @@ public abstract class AbstractAmqpClient {
 		// 声明(创建)一个队列
 		/**
 		 * queue        队列的名称
-		 * durable      是否持久化
+		 * durable      是否持久化（注意：如果不持久化，服务重启将自动删除）
 		 * exclusive    是否单个 Channel 独占监听，如果想要顺序消费消息，就可以设置为 true
 		 * autoDelete   队列没有绑定exchange（交换机）是否自动删除消息
 		 * arguments    扩展参数

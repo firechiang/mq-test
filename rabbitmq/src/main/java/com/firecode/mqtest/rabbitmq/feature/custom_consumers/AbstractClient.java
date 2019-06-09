@@ -25,7 +25,7 @@ public class AbstractClient extends AbstractAmqpClient {
 		/**
 		 * exchangeName  交换机名称
 		 * exchangeType  交换机类型
-		 * durable       是否持久化
+		 * durable       是否持久化（注意：如果不持久化，服务重启将自动删除）
 		 * autoDelete    当最后一个绑定到Exchange(交换机)上的队列删除后，自动删除该Exchange(交换机)
 		 * internal      当前Exchange(交换机)是否用于RabbitMQ内部使用，默认为False
 		 * arguments     扩展参数，用于扩展AMQP协议自定义一些属性
