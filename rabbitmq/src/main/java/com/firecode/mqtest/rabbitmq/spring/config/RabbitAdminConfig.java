@@ -6,8 +6,13 @@ import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
-public class RabbitmqConfig {
+/**
+ * RabbitMQ管理相关
+ * @author JIANG
+ */
+//@Configuration
+@SuppressWarnings("unused")
+public class RabbitAdminConfig {
 	
 	@Bean
 	public ConnectionFactory connectionFactory(){
@@ -26,4 +31,5 @@ public class RabbitmqConfig {
 		admin.setAutoStartup(true);
 		return admin;
 	}
+
 }

@@ -37,6 +37,7 @@ $ rpm -ivh rabbitmq-server-3.6.5-1.noarch.rpm                                   
 #### 六、启动
 ```bash
 $ service rabbitmq-server start                                                 # 启动  RabbitMQ 服务
+$ service rabbitmq-server restart                                               # 重启  RabbitMQ 服务
 $ service rabbitmq-server stop && epmd -kill                                    # 启动  RabbitMQ 服务并且停止 Erlang 守护进程
 $ ps -ef | grep rabbit                                                          # 查看 RabbitMQ 进程信息
 ```

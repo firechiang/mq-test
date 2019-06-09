@@ -1,3 +1,36 @@
 server:
   port: 8080
-  context-path: /
+spring:
+  rabbitmq:
+    addresses: 192.168.229.133:5672
+    username: guest
+    password: guest
+    virtual-host: /
+    connection-timeout: 15000
+    publisher-confirms: true            # 启用监听消息是否投递成功
+    publisher-returns: true             # 启用监听不可路由的消息，就是监听发送失败的消息
+    template:
+      mandatory: true                   # 如果为true，监听器则接收路由不可达的消息，如果为false Broker端自动删除该消息，监听器接收不到
+    listener:
+      simple:
+        acknowledge-mode: manual        # 手动确认消息
+        concurrency: 5                  # 初始化时消费者数量
+        max-concurrency: 10             # 初始化时最大消费者数量
+        retry:
+          enabled: true                 # 开启消费者重试
+          max-attempts: 5               # 消息消费最大重试次数
+          initial-interval: 5000        # 重试间隔时间（单位毫秒）
+        default-requeue-rejected: false # 重试次数超过上面的设置之后是否丢弃（false不丢弃时消息将会入死信队列，注意：死信队列要配置的）  
+      # 自定义的配置  
+      user:
+        exchange:
+          name: test.boot.exchange.topic.user
+          durable: false
+          type: topic
+          ignoreDeclarationExceptions: true
+        queue:
+          name: test.boot.queue.topic.user
+          durable: false
+        key: test.boot.queue.topic.*
+            
+      

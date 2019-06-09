@@ -16,11 +16,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.firecode.mqtest.rabbitmq.BasicTest;
-import com.firecode.mqtest.rabbitmq.spring.config.RabbitmqConfig;
+import com.firecode.mqtest.rabbitmq.spring.config.RabbitAdminConfig;
 
+/**
+ * RabbitMQ管理相关测试（注意：测试前请将 RabbitAdminConfig 类上的 @Configuration 注解注释放开）
+ * @author JIANG
+ */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes={RabbitmqConfig.class})
-public class RabbitmqConfigTest extends BasicTest {
+@SpringBootTest(classes={RabbitAdminConfig.class})
+public class RabbitAdminConfigTest extends BasicTest {
 	
 	@Autowired
 	private RabbitAdmin admin;
