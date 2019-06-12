@@ -109,3 +109,12 @@ $ rabbitmqctl set_policy ha-all "^" '{"ha-mode":"all"}'
 $ rabbitmqctl cluster_status                              
 ```
 
+#### 十三、集群和RabbitMQ的基本操作
+```bash
+$ rabbitmqctl forget_cluster_node rabbit@server003         # 将 server003 节点移出集群
+$ service rabbitmq-server start                            # 启动  RabbitMQ 服务
+$ service rabbitmq-server restart                          # 重启  RabbitMQ 服务
+$ service rabbitmq-server stop && epmd -kill               # 启动  RabbitMQ 服务并且停止 Erlang 守护进程
+$ ps -ef | grep rabbit                                     # 查看 RabbitMQ 进程信息
+```
+
