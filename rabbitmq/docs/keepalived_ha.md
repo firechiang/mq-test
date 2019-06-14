@@ -5,6 +5,7 @@ $ sudo yum install gcc openssl-devel
 # 备用下载地址：https://github.com/firechiang/mq-test/raw/master/rabbitmq/data/keepalived-2.0.16.tar.gz
 $ wget https://www.keepalived.org/software/keepalived-2.0.16.tar.gz
 $ tar -zxvf keepalived-2.0.16.tar.gz -C ./
+$ cd keepalived-2.0.16
 $ sudo ./configure --prefix=/usr/local/keepalived && sudo make && sudo make install
 $ scp -r /home/tools/keepalived-2.0.16/keepalived/etc/init.d /usr/local/keepalived/etc
 ```
