@@ -82,7 +82,7 @@ $ chmod +x /usr/local/keepalived/haproxy_check.sh   # 赋予脚本可执行权�
 $ scp -r /usr/local/keepalived root@server004:/usr/local
 ```
 
-#### 七、修改[vi /usr/local/keepalived/etc/keepalived/keepalived.conf]从节点配置文件
+#### 七、修改[vi /usr/local/keepalived/etc/keepalived/keepalived.conf]从节点配置文件（注意：每个从节点都要配置）
 ```bash
 global_defs {
   router_id server004                               ## 节点ID，通常为hostname（注意：主从节点不能一样）
