@@ -114,7 +114,8 @@ local0.*                                                /var/log/keepalived.log
 
 #### 十、配置开机启动
 ```bash
-$ sudo cp /usr/local/keepalived/etc/init.d/keepalived /etc/init.d/keepalived
+$ cp /usr/local/keepalived/etc/init.d/keepalived /etc/init.d/keepalived
+$ ln -s /usr/local/keepalived/sbin/keepalived /sbin/
 ```
 
 #### 十一、启动和停止 keepalived
