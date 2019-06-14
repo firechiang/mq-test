@@ -29,13 +29,14 @@ Exchange(交换机)将RoutingKey和某个Topic进行模糊匹配，此时队列�
 #### [四、3.6.x-rpm(一件安装) 单节点搭建][1]
 #### [五、3.7.x-binary(二进制包) 单节点搭建][2]
 #### [六、3.6.x-rpm(一键安装) 集群搭建（镜像全量模式）][5]
-#### [七、HAProxy + Keepalived 集群负载均衡][6]
-#### [八、插件安装][3]
-#### [九、命令行简单使用][4]
+#### [七、HAProxy 搭建负载均衡](https://github.com/firechiang/haproxy-test)
+#### [八、Keepalived 搭建高可用][6]
+#### [九、插件安装][3]
+#### [十、命令行简单使用][4]
 
 [1]: https://github.com/firechiang/mq-test/tree/master/rabbitmq/docs/rpm-single-node.md
 [2]: https://github.com/firechiang/mq-test/tree/master/rabbitmq/docs/centos-single-node.md
 [3]: https://github.com/firechiang/mq-test/tree/master/rabbitmq/docs/rabbitmq-plugins-install.md
 [4]: https://github.com/firechiang/mq-test/tree/master/rabbitmq/docs/command-simple-use.md
 [5]: https://github.com/firechiang/mq-test/tree/master/rabbitmq/docs/cluster-image-model.md
-[6]: https://github.com/firechiang/mq-test/tree/master/rabbitmq/docs/haproxy_keepalived_loadbalan.md
+[6]: https://github.com/firechiang/mq-test/tree/master/rabbitmq/docs/keepalived_ha.md
