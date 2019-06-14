@@ -105,7 +105,7 @@ $ sudo firewall-cmd --direct --permanent --add-rule ipv4 filter INPUT 0 --in-int
 ##### 9.1，修改[vi /usr/local/keepalived/etc/sysconfig/keepalived]
 ```bash
 # -f 指定配置文件目录，-S 15 表示 local0.* 具体的还需要看一下/etc/rsyslog.conf文件
-KEEPALIVED_OPTIONS="-f /usr/local/keepalived/etc/keepalived/keepalived.conf -D -S 15"
+KEEPALIVED_OPTIONS="-f /usr/local/keepalived/etc/keepalived/keepalived.conf -D -S 0"
 ```
 ##### 9.2，修改[vi /etc/rsyslog.conf]添加如下内容
 ```bash
