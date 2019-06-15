@@ -80,8 +80,8 @@ $ sudo rabbitmqctl stop
 ```bash
 $ cd /var/lib/rabbitmq                                     # 到 /var/lib/rabbitmq 目录
 $ ll -a                                                    # 查看当前目录下所有文件夹以及文件
-$ scp .erlang.cookie root@server002:`pwd`                  # 复制文件 .erlang.cookie 到 server002 的当前目录
-$ scp .erlang.cookie root@server003:`pwd`                  # 复制文件 .erlang.cookie 到 server003 的当前目录
+$ sudo scp .erlang.cookie root@server002:`pwd`            # 复制文件 .erlang.cookie 到 server002 的当前目录
+$ sudo scp .erlang.cookie root@server003:`pwd`            # 复制文件 .erlang.cookie 到 server003 的当前目录
 ```
 
 #### 十、以组建集群模式启动集群各个节点（注意：主节点先启动）
