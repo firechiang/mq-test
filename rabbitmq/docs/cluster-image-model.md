@@ -51,7 +51,11 @@ $ rpm -ivh rabbitmq-server-3.6.5-1.noarch.rpm         # 安装 RabbitMQ
 
 #### 五、修改[vi /usr/lib/rabbitmq/lib/rabbitmq_server-3.6.5/ebin/rabbit.app]配置文件（注意：集群每个节点都要修改）
 ```bash
+{tcp_listeners, [5672]}                               # rabbimq的监听端口，默认为[5672]
+{disk_free_limit, 50000000}                           # 磁盘低水位线，若磁盘容量低于指定值则停止接收数据，默认值为{mem_relative, 1.0},即与内存相关联1：1，也可定制为多少byte.
+{vm_memory_high_watermark, 0.4}                       # 设置内存低水位线，若低于该水位线，则开启流控机制，默认值是0.4，即内存总量的40%
 {loopback_users, [guest]}                             # 用户名和密码
+{hipe_compile, false}                                 # 将部分rabbimq代码用High Performance Erlang compiler编译，可提升性能，该参数是实验性，若出现erlang vmsegfaults，应关掉
 ```
 
 #### 六、启动集群的各个节点
@@ -109,12 +113,18 @@ $ rabbitmqctl set_policy ha-all "^" '{"ha-mode":"all"}'
 $ rabbitmqctl cluster_status                            
 ```
 
-#### 十三、集群和RabbitMQ的基本操作
+#### 十三、RabbitMQ基本操作
 ```bash
-$ rabbitmqctl forget_cluster_node rabbit@server003    # 将 server003 节点移出集群
 $ service rabbitmq-server start                       # 启动  RabbitMQ 服务
 $ service rabbitmq-server restart                     # 重启  RabbitMQ 服务
 $ service rabbitmq-server stop && epmd -kill          # 启动  RabbitMQ 服务并且停止 Erlang 守护进程
 $ ps -ef | grep rabbit                                # 查看 RabbitMQ 进程信息
 ```
 
+#### 十四、集群基本操作
+```bash
+# 将 server003 节点移出集群（注意：节点重新加入集群，会自动重新同步队列数据）
+$ rabbitmqctl forget_cluster_node rabbit@server003    
+# 如果主节点挂了，上面的命令是不能移除节点的，要移除需要加上 -offine 它会迫使从新选举
+$ rabbitmqctl forget_cluster_node -offine rabbit@server003
+```

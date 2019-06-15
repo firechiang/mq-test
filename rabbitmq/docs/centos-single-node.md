@@ -22,12 +22,18 @@ $ cd ../rabbitmq_server-3.7.15
 #### 三、修改配置文件，[官方配置说明](https://www.rabbitmq.com/configure.html)（注意：配置文件都需要手动创建）
 ##### 3.1、修改[vi /home/rabbitmq_server-3.7.15/etc/rabbitmq/rabbitmq-env.conf]配置，[官方配置说明](https://www.rabbitmq.com/configure.html#environment-env-file-unix)（注意：这个一般不需要配置）
 ```bash
-# 覆盖节点名称
+# 节点名称
 NODENAME=bunny@myhost   
 # 指定传统配置文件位置  
 CONFIG_FILE=/home/rabbitmq_server-3.7.15/etc/rabbitmq/rabbitmq.conf
 # 指定高级配置文件位置（新版中某些配置设置不可用或难以使用sysctl格式进行配置。 因此，可以使用Erlang术语格式的其他配置文件（与rabbitmq.config相同）。 该文件通常名为advanced.config。 它将与rabbitmq.conf中提供的配置合并）
 ADVANCED_CONFIG_FILE=/etc/rabbitmq/advanced.config
+
+#NODE_IP_ADDRESS=本机IP地址
+#NODE_PORT=5672
+#LOG_BASE=/var/lib/rabbitmq/log
+#PLUGINS_DIR=/data/rabbitmq/plugins 插件目录
+#MNESIA_BASE=/var/lib/rabbitmq/mnesia 实际数据存储目录
 ```
 
 ##### 3.2、修改[vi /home/rabbitmq_server-3.7.15/etc/rabbitmq/rabbitmq.conf]传统配置，[官方配置说明](https://www.rabbitmq.com/configure.html#config-items)，[官方配置示例](https://github.com/rabbitmq/rabbitmq-server/blob/v3.7.x/docs/rabbitmq.conf.example)
