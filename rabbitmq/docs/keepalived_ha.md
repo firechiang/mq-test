@@ -112,7 +112,7 @@ KEEPALIVED_OPTIONS="-f /usr/local/keepalived/etc/keepalived/keepalived.conf -D -
 local0.*                                                /var/log/keepalived.log
 ```
 
-#### 十、配置开机启动
+#### 十、配置开机启动（注意：每个节点都要配置）
 ```bash
 $ cp /usr/local/keepalived/etc/init.d/keepalived /etc/init.d/keepalived
 $ ln -s /usr/local/keepalived/sbin/keepalived /sbin/
