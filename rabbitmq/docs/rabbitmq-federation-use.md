@@ -23,5 +23,5 @@ $ rabbitmq-plugins enable rabbitmq_federation_management
 ![image](https://github.com/firechiang/mq-test/blob/master/rabbitmq/image/federation05.png)
 ##### 3.6，看看Federation Status（同步状态）是否有数据了（Admin > 右边的 Federation Status）
 ![image](https://github.com/firechiang/mq-test/blob/master/rabbitmq/image/federation06.png)
-##### 3.7，到被同步数据的节点上看看是否自动创建了交换机和队列以及有2个连接和1个消费者（都有的话说明数据同步配置好）
+##### 3.7，到被同步数据的节点上看看是否自动创建了交换机和队列以及有2个连接和1个消费者（都有的话说明数据同步配置好了）
 ![image](https://github.com/firechiang/mq-test/blob/master/rabbitmq/image/federation07.png)
