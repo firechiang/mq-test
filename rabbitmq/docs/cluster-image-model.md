@@ -49,7 +49,7 @@ $ halt().                                                  # 退出 Eshell 命�
 $ sudo rpm -ivh rabbitmq-server-3.6.5-1.noarch.rpm         # 安装 RabbitMQ
 ```
 
-#### 五、修改[vi /usr/lib/rabbitmq/lib/rabbitmq_server-3.6.5/ebin/rabbit.app]配置文件（注意：集群每个节点都要修改）
+#### 五、修改[sudo vi /usr/lib/rabbitmq/lib/rabbitmq_server-3.6.5/ebin/rabbit.app]配置文件（注意：集群每个节点都要修改）
 ```bash
 {loopback_users, [guest]}                                  # 用户名和密码
 ```
