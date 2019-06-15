@@ -76,7 +76,7 @@ $ sudo rabbitmq-plugins enable rabbitmq_management
 $ sudo rabbitmqctl stop
 ```
 
-#### 九、复制主节点的 .erlang.cookie 文件到集群各个节点（注意：以下操作要到主节点上执行）
+#### 九、复制主节点的 .erlang.cookie 文件到集群各个节点（注意：以下操作要到主节点上执行，如果遇到 Permission denied 错误，请在集群的各个节点执行该命令：sudo chmod -R 777 /var/lib/rabbitmq 将目录权限放开）
 ```bash
 $ cd /var/lib/rabbitmq                                     # 到 /var/lib/rabbitmq 目录
 $ ll -a                                                    # 查看当前目录下所有文件夹以及文件
