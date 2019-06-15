@@ -65,15 +65,15 @@ $ ps -ef | grep rabbit                                     # 查看 RabbitMQ 进
 #### 七、集群各个节点安装管理插件服务（注意：安装插件时 RabbitMQ 必须是启动的否则无法安装）
 ```bash
 # 查看 RabbitMQ 自带的插件列表
-$ rabbitmq-plugins list                                                         
+$ sudo rabbitmq-plugins list                                                         
 
 # 安装管理控制台插件，访问地址：http://192.168.229.133:15672，用户名和密码都是：guest，就是我们上面配置的
-$ rabbitmq-plugins enable rabbitmq_management                                   
+$ sudo rabbitmq-plugins enable rabbitmq_management                                   
 ```
 
 #### 八、停止集群的各个节点
 ```bash
-$ rabbitmqctl stop
+$ sudo rabbitmqctl stop
 ```
 
 #### 九、复制主节点的 .erlang.cookie 文件到集群各个节点（注意：以下操作要到主节点上执行）
@@ -86,35 +86,35 @@ $ scp .erlang.cookie root@server003:`pwd`                  # 复制文件 .erlan
 
 #### 十、以组建集群模式启动集群各个节点（注意：主节点先启动）
 ```bash
-$ rabbitmq-server -detached                                # -detached 就是以组建集群模式启动
+$ sudo rabbitmq-server -detached                           # -detached 就是以组建集群模式启动
 ```
 
 #### 十一、将集群所有的 Slave（从）节点加入到Master（主）主节点（注意：以下操作在Slave节点上执行，而且是集群所有的Slave节点都要执行）
 ```bash
 # 停止当前Slave（从）节点 
-$ rabbitmqctl stop_app                                     
+$ sudo rabbitmqctl stop_app                                     
 # 将当前Slave（从）节点加入到 Master（主）节点  server001（注意：--disc 表示当前节点的数据以磁盘存储的方式；--ram 表示当前节点的数据以内存存储的方式）
-$ rabbitmqctl join_cluster [--disc|--ram] rabbit@server001 
+$ sudo rabbitmqctl join_cluster [--disc|--ram] rabbit@server001 
 # 启动当Slave（从）从节点
-$ rabbitmqctl start_app                                    
+$ sudo rabbitmqctl start_app                                    
 ```
 
 #### 十二、配置集群（注意：以下操作到集群任意节点执行都可以）
 ```bash
 # 设置或修改集群的名称为  my_rabbitmq_cluster
-$ rabbitmqctl set_cluster_name my_rabbitmq_cluster
+$ sudo rabbitmqctl set_cluster_name my_rabbitmq_cluster
 # 设置集群以镜像全量模式复制队列数据到各个节点（就是一条消息，集群的每一个节点上都会有，也就是说这个模式不是切片模式）       
-$ rabbitmqctl set_policy ha-all "^" '{"ha-mode":"all"}'
+$ sudo rabbitmqctl set_policy ha-all "^" '{"ha-mode":"all"}'
 # 查看集群状态和节点情况
-$ rabbitmqctl cluster_status                              
+$ sudo rabbitmqctl cluster_status                              
 ```
 
 #### 十三、集群和RabbitMQ的基本操作
 ```bash
-$ rabbitmqctl forget_cluster_node rabbit@server003         # 将 server003 节点移出集群
-$ service rabbitmq-server start                            # 启动  RabbitMQ 服务
-$ service rabbitmq-server restart                          # 重启  RabbitMQ 服务
-$ service rabbitmq-server stop && epmd -kill               # 启动  RabbitMQ 服务并且停止 Erlang 守护进程
+$ sudo rabbitmqctl forget_cluster_node rabbit@server003    # 将 server003 节点移出集群
+$ sudo service rabbitmq-server start                       # 启动  RabbitMQ 服务
+$ sudo service rabbitmq-server restart                     # 重启  RabbitMQ 服务
+$ sudo service rabbitmq-server stop && epmd -kill          # 启动  RabbitMQ 服务并且停止 Erlang 守护进程
 $ ps -ef | grep rabbit                                     # 查看 RabbitMQ 进程信息
 ```
 
