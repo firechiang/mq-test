@@ -19,6 +19,8 @@ Exchange(交换机)将RoutingKey和某个Topic进行模糊匹配，此时队列�
 注意：fanout类型的Exchange(交换机)转发消息是最快的，性能是最好的
 
 3.1.4，headers：通过头信息进行路由。
+
+3.1.5，x-delayed-message 延迟交换机，它会将消息延迟推送到队列（注意：这个需要安装插件）
 ```
 ##### 3.3，Durability：是否持久化
 ##### 3.4，Auto Delete：当最后一个绑定到Exchange(交换机)上的队列删除后，自动删除该Exchange(交换机)

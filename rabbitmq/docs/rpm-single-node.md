@@ -5,6 +5,8 @@ $ cd /home/tools
 $ wget www.rabbitmq.com/releases/erlang/erlang-18.3-1.el7.centos.x86_64.rpm   
 # 下载RabbitMQ-3.6.5-1 安装包             
 $ wget www.rabbitmq.com/releases/rabbitmq-server/v3.6.5/rabbitmq-server-3.6.5-1.noarch.rpm 
+# 下载RabbitMQ-3.6.5-1 延迟队列插件
+$ wget https://github.com/firechiang/mq-test/raw/master/rabbitmq/data/rabbitmq_delayed_message_exchange-20171215-3.6.x.ez
 ```
 
 #### 二、下载安装 Socat（注意：如果下面的地址下载不了，请使用[备用下载地址](https://github.com/firechiang/mq-test/raw/master/rabbitmq/data/socat-1.7.3.2-5.el7.lux.x86_64.rpm)），[编译 Socat 源码方式安装](https://github.com/firechiang/mq-test/tree/master/rabbitmq/docs/socat-src-install.md)
@@ -27,6 +29,8 @@ $ halt().                                                                       
 ```bash
 $ cd /home/tools
 $ rpm -ivh rabbitmq-server-3.6.5-1.noarch.rpm                                   # 安装 RabbitMQ
+# 拷贝延迟队列插件到 RabbitMQ 插件目录
+$ cp ./rabbitmq_delayed_message_exchange-20171215-3.6.x.ez /usr/lib/rabbitmq/lib/rabbitmq_server-3.6.5/plugins
 ```
 
 #### 五、修改[vi /usr/lib/rabbitmq/lib/rabbitmq_server-3.6.5/ebin/rabbit.app]
@@ -42,11 +46,14 @@ $ service rabbitmq-server stop && epmd -kill                                    
 $ ps -ef | grep rabbit                                                          # 查看 RabbitMQ 进程信息
 ```
 
-#### 七、安装管理插件服务（注意：安装插件时 RabbitMQ 必须是启动的否则无法安装）
+#### 七、安装插件（注意：安装插件时 RabbitMQ 必须是启动的否则无法安装）
 ```bash
 # 查看 RabbitMQ 自带的插件列表
 $ rabbitmq-plugins list                                                         
 
 # 安装管理控制台插件，访问地址：http://192.168.229.133:15672，用户名和密码都是：guest，就是我们上面配置的
-$ rabbitmq-plugins enable rabbitmq_management                                   
+$ rabbitmq-plugins enable rabbitmq_management   
+
+# 安装延迟队列插件
+$ rabbitmq-plugins enable rabbitmq_delayed_message_exchange                                
 ```
