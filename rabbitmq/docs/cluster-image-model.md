@@ -39,14 +39,14 @@ $ scp -r rabbitmq-server-3.6.5-1.noarch.rpm socat-1.7.3.2-5.el7.lux.x86_64.rpm t
 #### 四、集群各个节点安装 RabbitMQ-3.6.5-1
 ```bash
 $ cd /home/tools
-$ rpm -ivh tcp_wrappers-7.6-77.el7.x86_64.rpm              # 安装 Socat 依赖 tcp_wrappers
-$ rpm -ivh socat-1.7.3.2-5.el7.lux.x86_64.rpm              # 安装 Socat 密钥包
-$ rpm -ivh erlang-18.3-1.el7.centos.x86_64.rpm             # 安装 Erlang
+$ sudo rpm -ivh tcp_wrappers-7.6-77.el7.x86_64.rpm         # 安装 Socat 依赖 tcp_wrappers
+$ sudo rpm -ivh socat-1.7.3.2-5.el7.lux.x86_64.rpm         # 安装 Socat 密钥包
+$ sudo rpm -ivh erlang-18.3-1.el7.centos.x86_64.rpm        # 安装 Erlang
 
 $ erl                                                      # 如果进入了 Eshell 命令行，说明 Erlang 安装成功了      
 $ halt().                                                  # 退出 Eshell 命令行 
 
-$ rpm -ivh rabbitmq-server-3.6.5-1.noarch.rpm              # 安装 RabbitMQ
+$ sudo rpm -ivh rabbitmq-server-3.6.5-1.noarch.rpm         # 安装 RabbitMQ
 ```
 
 #### 五、修改[vi /usr/lib/rabbitmq/lib/rabbitmq_server-3.6.5/ebin/rabbit.app]配置文件（注意：集群每个节点都要修改）
