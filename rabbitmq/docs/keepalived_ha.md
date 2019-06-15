@@ -104,12 +104,12 @@ $ sudo firewall-cmd --direct --permanent --add-rule ipv4 filter INPUT 0 --in-int
 #### 九、修改 keepalived 配置文件和日志文件所在目录（注意：每个节点都要配置）
 ##### 9.1，修改[vi /usr/local/keepalived/etc/sysconfig/keepalived]
 ```bash
-# -f 指定配置文件目录，-S 15 表示 local0.* 具体的还需要看一下/etc/rsyslog.conf文件
-KEEPALIVED_OPTIONS="-f /usr/local/keepalived/etc/keepalived/keepalived.conf -D -S 0"
+# -f 指定配置文件目录，-S 15 表示 local9.* 具体的还需要看一下/etc/rsyslog.conf文件
+KEEPALIVED_OPTIONS="-f /usr/local/keepalived/etc/keepalived/keepalived.conf -D -S 9"
 ```
 ##### 9.2，修改[vi /etc/rsyslog.conf]添加如下内容
 ```bash
-local0.*                                                /var/log/keepalived.log
+local9.*                                                /var/log/keepalived.log
 ```
 
 #### 十、配置开机启动（注意：每个节点都要配置）
