@@ -129,3 +129,15 @@ $ service keepalived status                         # 查看状态
 
 $ ps -ef | grep keepalived                          # 查看 keepalived 进程信息
 ```
+
+#### 十一、测试 keepalived
+```bash
+# 1，启动所有节点的 keepalived
+$ service keepalived start
+# 2，所有节点都执行看看，我们上面配置的虚拟IP 192.168.229.16 在哪台机器上
+$ ip addr   
+# 3，停掉带有虚拟IP 192.168.229.16 的机器的 keepalived
+$ service keepalived stop 
+# 4，查看那台没有带虚拟IP 192.168.229.16 的机器，是否现在带有虚拟IP 192.168.229.16，如果带有说明 keepalived 高可用搭建成功了
+$ ip addr                                 
+```
