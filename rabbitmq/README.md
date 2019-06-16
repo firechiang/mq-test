@@ -33,7 +33,7 @@ Exchange(交换机)将RoutingKey和某个Topic进行模糊匹配，此时队列�
 #### [六、3.6.x-rpm(一键安装) 集群搭建（镜像全量模式）][5]
 #### [七、HAProxy 搭建负载均衡](https://github.com/firechiang/haproxy-test)
 #### [八、Keepalived 搭建高可用][6]
-#### [九、RabbitMQ集群双活配置（多数据中心同步数据）][7]
+#### [九、RabbitMQ双活集群同步数据配置][7]
 #### [十、插件安装][3]
 #### [十一、命令行简单使用][4]
 
