@@ -42,6 +42,7 @@ public class Producer extends AbstractClient {
 					                              .Builder()
 					                              .deliveryMode(2) // 1 非持久化消息，2 持久化消息
 					                              .contentType(StandardCharsets.UTF_8.name())
+					                              .expiration("5000")  // 消息5秒过期
 					                              .headers(headers)
 					                              .build();
 			/**
