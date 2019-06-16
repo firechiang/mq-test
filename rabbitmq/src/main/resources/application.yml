@@ -59,15 +59,10 @@ spring:
           destination: test.spring.exchange.topic.bean  # 交换机名称
           group: test.spring.queue.topic.bean           # 队列名称 
           consumer:
-            concurrency: 5                              # 初始化时消费者数量
+            concurrency: 1                              # 初始化时消费者数量
       # RabbitMQ 自有特性相关配置      
       rabbit:
         bindings:
-          # 生产者端管道自有特性配置
-          output_channel:                               # 管道的名称（就是以下配置要作用到哪个管道上去）
-            producer:                                   # 生产者
-              delivery-mode: non-persistent             # 不持久化
-              routing-key-expression: test.spring.#     # 路由键 
           # 消费者端管道自有特性配置    
           input_channel:                                # 管道的名称（就是以下配置要作用到哪个管道上去）
             consumer:                                   # 消费端
