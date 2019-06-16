@@ -25,7 +25,7 @@ public class DisruptorTest {
 		int ringBufferSize = 65536;
 		Disruptor<String> disruptor = new Disruptor<String>(new StringTestEventFactory(),
 				                                            ringBufferSize,Executors.defaultThreadFactory(),
-				                                            ProducerType.SINGLE,//但生产者
+				                                            ProducerType.SINGLE,//单生产者
 				                                            new YieldingWaitStrategy());
 		long time = System.currentTimeMillis();
 		/**
@@ -33,7 +33,7 @@ public class DisruptorTest {
 		 */
 		disruptor.handleEventsWith(new StringTestEventHandler(currentThread,time));
 		/**
-		 * 启动消费（注意：要先启动消费者，它的性能才能最大化）
+		 * 启动消费（注意：要先启动消费者，在使用生产者，它的性能才能最大化）
 		 */
 		disruptor.start();	
 		/**
