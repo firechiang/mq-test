@@ -7,6 +7,8 @@ import java.util.concurrent.ThreadFactory;
 import com.firecode.mqtest.disruptor.domain.OrderEvent;
 import com.lmax.disruptor.BlockingWaitStrategy;
 import com.lmax.disruptor.RingBuffer;
+import com.lmax.disruptor.SleepingWaitStrategy;
+import com.lmax.disruptor.YieldingWaitStrategy;
 import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.ProducerType;
 
@@ -23,15 +25,20 @@ public class OrderEventMain {
 		int ringBufferSize = 65536;
 		ThreadFactory threadFactory = Executors.defaultThreadFactory();
 		ProducerType single = ProducerType.SINGLE;
-		BlockingWaitStrategy waitStrategy = new BlockingWaitStrategy();
+		// 效率最低的策略，但它对CPU的消耗最小并且在各种不同的环境中能提供更加一致的性能表现
+		BlockingWaitStrategy bWaitStrategy = new BlockingWaitStrategy();
+		// 性能和 BlockingWaitStrategy 差不多，对CPU的消耗也类似，但对生产者线程的影响最小，适合用于异步日志类似的场景
+		SleepingWaitStrategy sWaitStrategy = new SleepingWaitStrategy();
+		// 效率最高的策略，同时对CPU利用率也极高，适合用于低延迟的系统，在要求极高性能且事件处理数小于CPU逻辑核心数的场景中，推荐使用此策略；例如：CPU开启超线程的特性
+		YieldingWaitStrategy yWaitStrategy = new YieldingWaitStrategy();
 		/**
 		 * @param eventFactory    事件工厂
 		 * @param ringBufferSize  Ring缓冲区大小
 		 * @param threadFactory   线程工厂
 		 * @param single          生产者模式（单生产者模式）
-		 * @param waitStrategy    等待策略
+		 * @param waitStrategy    等待策略（这个是给消费者用的，如果没有数据进行等待）
 		 */
-		Disruptor<OrderEvent> disruptor = new Disruptor<>(eventFactory,ringBufferSize,threadFactory,single,waitStrategy);
+		Disruptor<OrderEvent> disruptor = new Disruptor<>(eventFactory,ringBufferSize,threadFactory,single,bWaitStrategy);
 		/**
 		 * 配置消费者
 		 */
