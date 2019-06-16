@@ -59,7 +59,7 @@ spring:
           destination: test.spring.exchange.topic.bean  # 交换机名称
           group: test.spring.queue.topic.bean           # 队列名称 
           consumer:
-            concurrency: 1                              # 初始化时消费者数量
+            concurrency: 5                              # 初始化时消费者数量
       # RabbitMQ 自有特性相关配置      
       rabbit:
         bindings:
