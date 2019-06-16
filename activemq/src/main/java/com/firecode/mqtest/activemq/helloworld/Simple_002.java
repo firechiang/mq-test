@@ -48,6 +48,7 @@ public class Simple_002 {
 		});
 	}
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) throws JMSException, IOException  {
 		Simple_002 simple = new Simple_002();
 		System.in.read();
