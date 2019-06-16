@@ -1,6 +1,6 @@
-#### 一、RingBuffer环形缓冲区（注意：缓冲区大小最好是2的N次方，更有利于基于二进制的计算机进行计算）
+#### 一、RingBuffer环形缓冲区（注意：缓冲区大小最好是2的N次方，有利于基于二进制的计算机进行计算）
 ![object](https://github.com/firechiang/mq-test/blob/master/disruptor/image/ring.svg)
-#### 二、RingBuffer（环形缓冲区）的占位算法是每来一个元素Count计数器加1，元素存储位置计算公式：Count计数器 % 缓冲区大小 = 存储位置
+#### 二、RingBuffer的占位算法是每来一个元素Count计数器加1，元素存储位置计算公式：Count计数器 % 缓冲区大小 = 存储位置
 ```bash
 # 缓存区的大小
 int size = 8;
