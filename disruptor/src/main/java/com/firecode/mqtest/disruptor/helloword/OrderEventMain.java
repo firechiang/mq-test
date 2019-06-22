@@ -20,6 +20,7 @@ public class OrderEventMain {
 	
 	static final int index = 0;
 	
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		OrderEventFactory eventFactory = new OrderEventFactory();
 		int ringBufferSize = 65536;

@@ -14,7 +14,7 @@ public class OrderEventProducer {
 
 	private RingBuffer<OrderEvent> ringBuffer;
 
-	OrderEventProducer(RingBuffer<OrderEvent> ringBuffer) {
+	public OrderEventProducer(RingBuffer<OrderEvent> ringBuffer) {
 		this.ringBuffer = ringBuffer;
 	}
 
