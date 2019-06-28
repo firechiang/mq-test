@@ -8,20 +8,14 @@
 		<artifactId>mq-test</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>disruptor</artifactId>
-	<name>disruptor</name>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+	<groupId>com.lmax</groupId>
+	<artifactId>disruptor-core</artifactId>
+	<name>disruptor-core</name>
 	<dependencies>
-		<dependency>
-			<groupId>com.lmax</groupId>
-			<artifactId>disruptor-core</artifactId>
-			<version>${version}</version>
-		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>

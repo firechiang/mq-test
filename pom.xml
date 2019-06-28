@@ -61,5 +61,6 @@
 		<module>rocketmq</module>
 		<module>rabbitmq</module>
         <module>disruptor</module>
+    <module>disruptor-core</module>
   </modules>
 </project>
