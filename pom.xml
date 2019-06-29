@@ -57,10 +57,10 @@
 	</build>
 
 	<modules>
-		<module>activemq</module>
+	    <module>activemq</module>
 		<module>rocketmq</module>
 		<module>rabbitmq</module>
         <module>disruptor</module>
-    <module>disruptor-core</module>
-  </modules>
+        <module>disruptor-core</module>
+    </modules>
 </project>

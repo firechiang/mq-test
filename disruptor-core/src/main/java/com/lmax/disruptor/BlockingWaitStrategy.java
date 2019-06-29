@@ -22,65 +22,63 @@ import java.util.concurrent.locks.ReentrantLock;
 import com.lmax.disruptor.util.ThreadHints;
 
 /**
- * Blocking strategy that uses a lock and condition variable for {@link EventProcessor}s waiting on a barrier.
+ * Blocking strategy that uses a lock and condition variable for
+ * {@link EventProcessor}s waiting on a barrier.
  * <p>
- * This strategy can be used when throughput and low-latency are not as important as CPU resource.
+ * This strategy can be used when throughput and low-latency are not as
+ * important as CPU resource.
  */
-public final class BlockingWaitStrategy implements WaitStrategy
-{
-    private final Lock lock = new ReentrantLock();
-    private final Condition processorNotifyCondition = lock.newCondition();
+public final class BlockingWaitStrategy implements WaitStrategy {
+	private final Lock lock = new ReentrantLock();
+	private final Condition processorNotifyCondition = lock.newCondition();
 
-    @Override
-    public long waitFor(long sequence, Sequence cursorSequence, Sequence dependentSequence, SequenceBarrier barrier)
-        throws AlertException, InterruptedException
-    {
-        long availableSequence;
-        if (cursorSequence.get() < sequence)
-        {
-            lock.lock();
-            try
-            {
-                while (cursorSequence.get() < sequence)
-                {
-                    barrier.checkAlert();
-                    processorNotifyCondition.await();
-                }
-            }
-            finally
-            {
-                lock.unlock();
-            }
-        }
+	/**
+	 * 消费者等待并获取实际可消费的序号
+	 * @param sequence           消费者序号
+	 * @param cursorSequence     生产者已生产的最大序号
+	 * @param dependentSequence  
+	 * @param barrier             
+	 */
+	@Override
+	public long waitFor(long sequence, Sequence cursorSequence, Sequence dependentSequence, SequenceBarrier barrier)
+			throws AlertException, InterruptedException {
+		long availableSequence;
+		// 生产者最大序号小于消费者序号（消费者速度过快，没有数据消费了，消费者进行等待）
+		if (cursorSequence.get() < sequence) {
+			lock.lock();
+			try {
+				while (cursorSequence.get() < sequence) {
+					barrier.checkAlert();
+					processorNotifyCondition.await();
+				}
+			} finally {
+				lock.unlock();
+			}
+		}
 
-        while ((availableSequence = dependentSequence.get()) < sequence)
-        {
-            barrier.checkAlert();
-            ThreadHints.onSpinWait();
-        }
+		while ((availableSequence = dependentSequence.get()) < sequence) {
+			barrier.checkAlert();
+			ThreadHints.onSpinWait();
+		}
 
-        return availableSequence;
-    }
+		return availableSequence;
+	}
 
-    @Override
-    public void signalAllWhenBlocking()
-    {
-        lock.lock();
-        try
-        {
-            processorNotifyCondition.signalAll();
-        }
-        finally
-        {
-            lock.unlock();
-        }
-    }
+	/**
+	 * 如果消费者在等待就唤醒
+	 */
+	@Override
+	public void signalAllWhenBlocking() {
+		lock.lock();
+		try {
+			processorNotifyCondition.signalAll();
+		} finally {
+			lock.unlock();
+		}
+	}
 
-    @Override
-    public String toString()
-    {
-        return "BlockingWaitStrategy{" +
-            "processorNotifyCondition=" + processorNotifyCondition +
-            '}';
-    }
+	@Override
+	public String toString() {
+		return "BlockingWaitStrategy{" + "processorNotifyCondition=" + processorNotifyCondition + '}';
+	}
 }

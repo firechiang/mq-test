@@ -17,15 +17,18 @@ package com.lmax.disruptor;
 
 
 /**
+ * 序号栅栏（序号协调者）
  * Coordination barrier for tracking the cursor for publishers and sequence of
  * dependent {@link EventProcessor}s for processing a data structure
  */
 public interface SequenceBarrier
 {
     /**
+     * 
+     * 等待并获取真实的生产者已生产的最大序号
      * Wait for the given sequence to be available for consumption.
      *
-     * @param sequence to wait for
+     * @param sequence to wait for 消费者想要消费的序号
      * @return the sequence up to which is available
      * @throws AlertException       if a status change has occurred for the Disruptor
      * @throws InterruptedException if the thread needs awaking on a condition variable.

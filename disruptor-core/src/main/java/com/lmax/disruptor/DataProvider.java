@@ -15,7 +15,16 @@
  */
 package com.lmax.disruptor;
 
-public interface DataProvider<T>
-{
-    T get(long sequence);
+/**
+ * 获取实际数据
+ * @param <T>
+ */
+public interface DataProvider<T> {
+	
+	/**
+	 * 根据数据序号获取实际数据
+	 * @param sequence 数据序号
+	 * @return
+	 */
+	T get(long sequence);
 }
