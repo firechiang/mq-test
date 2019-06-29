@@ -30,7 +30,7 @@ public class OrderEventMain {
 		BlockingWaitStrategy bWaitStrategy = new BlockingWaitStrategy();
 		// 性能和 BlockingWaitStrategy 差不多，对CPU的消耗也类似，但对生产者线程的影响最小，适合用于异步日志类似的场景
 		SleepingWaitStrategy sWaitStrategy = new SleepingWaitStrategy();
-		// 效率最高的策略，同时对CPU利用率也极高，适合用于低延迟的系统，在要求极高性能且事件处理数小于CPU逻辑核心数的场景中，推荐使用此策略；例如：CPU开启超线程的特性
+		// 效率最高的策略，同时对CPU利用率也极高（谨慎使用），适合用于低延迟的系统，在要求极高性能且事件处理数小于CPU逻辑核心数的场景中，推荐使用此策略；例如：CPU开启超线程的特性
 		YieldingWaitStrategy yWaitStrategy = new YieldingWaitStrategy();
 		/**
 		 * @param eventFactory    事件工厂
