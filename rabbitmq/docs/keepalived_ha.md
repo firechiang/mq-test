@@ -41,7 +41,7 @@ vrrp_script chk_haproxy {
 vrrp_instance VI_1 {
   state MASTER                                    ## 主节点为MASTER，备份节点为BACKUP
   interface ens33                                 ## 绑定虚拟IP的网络接口（网卡），与本机IP地址所在的网络接口相同（Centos7默认：ens33）
-  virtual_router_id 51                            ## 虚拟路由ID号，可以随便起，但要唯一（注意：主从节点不能一样）
+  virtual_router_id 51                            ## 虚拟路由ID号，可以随便起（注意：主从节点必须相同,取值0-255。但是同一内网中不应有相同virtual_router_id的集群）
   priority 100                                    ## 优先级配置，越大优先级越高，抢占IP成功率越高，主节点最好设置的比从节点大（0-254的值）
   advert_int 1                                    ## 节点间组播信息发送间隔（心跳检测时间，单位秒），默认1s（注意：主从节点需一致）
   # 心跳检测时所使用的用户名密码
@@ -92,7 +92,6 @@ global_defs {
 vrrp_instance VI_1 {
   state BACKUP                                      ## 主节点为MASTER，备份节点为BACKUP
   interface ens33                                   ## 绑定虚拟IP的网络接口（网卡），与本机IP地址所在的网络接口相同（Centos7默认：ens33）
-  virtual_router_id 52                              ## 虚拟路由ID号，可以随便起，但要唯一（注意：主从节点不能一样）
   priority 90                                       ## 优先级配置，越大优先级越高，主节点最好设置的比从节点大（0-254的值）
 }
 ```
