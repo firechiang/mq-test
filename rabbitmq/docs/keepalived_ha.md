@@ -97,9 +97,11 @@ vrrp_instance VI_1 {
 }
 ```
 
-#### 八、配置防火墙允许对应的IP访问（注意：每个节点都要配置）
+#### 八、配置防火墙开启VRRP协议（注意：每个节点都要配置）
 ```bash
-$ sudo firewall-cmd --direct --permanent --add-rule ipv4 filter INPUT 0 --in-interface em1 --destination 192.168.229.132 --protocol vrrp -j ACCEPT
+#$ sudo firewall-cmd --direct --permanent --add-rule ipv4 filter INPUT 0 --in-interface em1 --destination 192.168.229.132 --protocol vrrp -j ACCEPT
+$ sudo firewall-cmd --direct --permanent --add-rule ipv4 filter INPUT 0 --protocol vrrp -j ACCEPT
+$ firewall-cmd --reload                             # 加载防火墙配置
 ```
 
 #### 九、修改 keepalived 配置文件和日志文件所在目录（注意：每个节点都要配置）
