@@ -11,7 +11,7 @@ import org.junit.Test;
 import com.rabbitmq.client.AMQP;
 
 /**
- * 延迟交换机，它会将消息延迟推送到队列
+ * 延迟交换机，它会将消息延迟推送到队列（注意：消息最大延迟是4294967296毫秒，超过这个值消息将不会延迟而是立即消费）
  * 生产者
  * @author JIANG
  */
