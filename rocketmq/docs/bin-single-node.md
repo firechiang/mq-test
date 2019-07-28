@@ -145,5 +145,5 @@ $ ./mqshutdown broker
 $ ./mqshutdown namesrv
 ```
 
-#### 八、RocketMQ控制台源码地址：https://github.com/apache/rocketmq-externals/tree/master/rocketmq-console，下载整个项目，将rocketmq-console模块导入到Eclipse使用即可（注意：不需要导入整个项目），也可以自己打包
+#### 八、RocketMQ控制台源码地址：https://github.com/apache/rocketmq-externals/tree/master/rocketmq-console 下载整个项目，然后将rocketmq-console模块导入到Eclipse使用即可（注意：不需要导入整个项目），也可以自己打包
 
