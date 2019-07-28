@@ -26,7 +26,7 @@ listenPort=10911
 # nameServer地址，多个以分号(;)分割
 namesrvAddr=server001:9876
 
-#在发送消息时，自动创建服务器不存在的 topic，默认创建的队列数
+#在发送消息时，自动创建服务器不存在的 topic，默认创建的队列数（注意：消费者数量最好是这个数的倍数，以达到消息最好的负载均衡）
 defaultTopicQueueNums=4
 
 # 是否允许 Broker 自动创建 Topic，建议线下开启，线上关闭
@@ -145,5 +145,5 @@ $ ./mqshutdown broker
 $ ./mqshutdown namesrv
 ```
 
-#### 八、RocketMQ控制台源码地址：https://github.com/apache/rocketmq-externals/tree/master/rocketmq-console，下载整个项目导入rocketmq-console模块到Eclipse使用即可（注意：不需要导入整个项目），也可以自己打包
+#### 八、RocketMQ控制台源码地址：https://github.com/apache/rocketmq-externals/tree/master/rocketmq-console，下载整个项目，将rocketmq-console模块导入到Eclipse使用即可（注意：不需要导入整个项目），也可以自己打包
 

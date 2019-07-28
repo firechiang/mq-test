@@ -1,5 +1,5 @@
 #### 一、[单节点搭建][1]
-#### RocketMQ概念模型
+#### RocketMQ概念模型（注意：长轮询拉取消息，如果没有消息，Broker服务端会让消费端连接进入等待状态，默认好像是等待5秒，再返回，具体代码在：https://github.com/apache/rocketmq/blob/master/broker/src/main/java/org/apache/rocketmq/broker/longpolling/PullRequestHoldService.java 67行）
 - 1，Broker：MQ消息服务（中转角色，用于消息存储与生产消息转发） 
 - 2，Producer 负责生产消息，一般由业务系统负责生产消息
 - 3，Producer Group 生产者集合，一般用于发送一类消息
