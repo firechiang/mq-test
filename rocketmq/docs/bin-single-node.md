@@ -123,7 +123,7 @@ JAVA_OPT="${JAVA_OPT} -server -Xms768m -Xmx768m -Xmn256m"
 JAVA_OPT="${JAVA_OPT} -server -Xms640m -Xmx640m -Xmn256m -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=320m"
 ```
 
-#### 六、启动服务
+#### 六、启动服务（注意：NameServer相当于ZK的角色）
 ```bash
 $ cd /home/rocketmq-all-4.4.0-bin-release/bin
 
