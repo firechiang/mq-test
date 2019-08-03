@@ -20,7 +20,8 @@ public class PullScheduleService {
 
     public static void main(String[] args) throws MQClientException {
 		/**
-		 * @param consumerGroup 消费者组的名称（这个名字可以随便起）
+		 * @param consumerGroup 消费者组的名称
+		 * 注意：这个名字可以随便起，如果Broker服务端没有配置自动创建，这个是要手动创建的
 		 */
         final MQPullConsumerScheduleService scheduleService = new MQPullConsumerScheduleService("helloword_pull_consumer");
         // queue模式
