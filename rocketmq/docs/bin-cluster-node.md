@@ -28,6 +28,7 @@ $ mkdir /home/rocketmq-all-4.4.0-bin-release/data/commitlog    # commitLog 存�
 $ mkdir /home/rocketmq-all-4.4.0-bin-release/data/consumequeue # 消费队列存储路径存储路径
 $ mkdir /home/rocketmq-all-4.4.0-bin-release/data/index        # 消息索引存储路径
 $ mkdir /home/rocketmq-all-4.4.0-bin-release/logs              # RocketMQ日子存储目录
+$ mkdir /home/rocketmq-all-4.4.0-bin-release/conf/my-cluater   # 集群配置文件目录
 ```
 
 #### 四、修改[vi /home/rocketmq-all-4.4.0-bin-release/conf/my-cluater/broker-m1.conf]配置（注意：这是第一个主节点的配置，它对应的机器是server001）
