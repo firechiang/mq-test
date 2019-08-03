@@ -1,4 +1,5 @@
 #### 一、[单节点搭建][1]
+#### 二、[多主多从集群搭建][2]
 #### RocketMQ概念模型（注意：长轮询拉取消息，如果没有消息，Broker服务端会让消费端连接进入等待状态，默认好像是等待5秒，再返回，具体代码在：https://github.com/apache/rocketmq/blob/master/broker/src/main/java/org/apache/rocketmq/broker/longpolling/PullRequestHoldService.java 67行）
 - 1，Broker：MQ消息服务（中转角色，用于消息存储与生产消息转发） 
 - 2，Producer 负责生产消息，一般由业务系统负责生产消息
@@ -12,4 +13,9 @@
 - 1，MessageModel.CLUSTERING（Queue模式消费消息）使用 RemoteBrokerOffsetStore 远程文件存储Offset（偏移量储存在Broker服务端，以便解决重复消费问题）
 - 2，MessageModel.BROADCASTING（Topic模式消费消息）使用 LocalFileOffsetStore 本地文件存储Offset（偏移量储存在消费者本地）
 
+#### NameServer 说明
+- 1，NameServer的部署都是相互独立的，它没有集群的概念。
+- 2，RocketMQ的Broker服务会将元数据发送到每一个NameServer。读取NameServer的数据的时候任选一台读取
+
 [1]: https://github.com/firechiang/mq-test/tree/master/rocketmq/docs/bin-single-node.md
+[2]: https://github.com/firechiang/mq-test/tree/master/rocketmq/docs/bin-cluster-node.md
