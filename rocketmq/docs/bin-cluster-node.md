@@ -60,6 +60,9 @@ autoCreateTopicEnable=false
 # 是否允许 Broker 自动创建订阅组，建议线下开启，线上关闭
 autoCreateSubscriptionGroup=false
 
+# 是否开启SQL表达式过滤消息（注意：不推荐开启，可能存在性能问题）
+enablePropertyFilter=false
+
 # 删除文件时间点，默认凌晨 4 点
 deleteWhen=04
 
@@ -154,6 +157,9 @@ autoCreateTopicEnable=false
 
 # 是否允许 Broker 自动创建订阅组，建议线下开启，线上关闭
 autoCreateSubscriptionGroup=false
+
+# 是否开启SQL表达式过滤消息（注意：不推荐开启，可能存在性能问题）
+enablePropertyFilter=false
 
 # 删除文件时间点，默认凌晨 4 点
 deleteWhen=04
@@ -250,6 +256,9 @@ autoCreateTopicEnable=false
 # 是否允许 Broker 自动创建订阅组，建议线下开启，线上关闭
 autoCreateSubscriptionGroup=false
 
+# 是否开启SQL表达式过滤消息（注意：不推荐开启，可能存在性能问题）
+enablePropertyFilter=false
+
 # 删除文件时间点，默认凌晨 4 点
 deleteWhen=04
 
@@ -344,6 +353,9 @@ autoCreateTopicEnable=false
 
 # 是否允许 Broker 自动创建订阅组，建议线下开启，线上关闭
 autoCreateSubscriptionGroup=false
+
+# 是否开启SQL表达式过滤消息（注意：不推荐开启，可能存在性能问题）
+enablePropertyFilter=false
 
 # 删除文件时间点，默认凌晨 4 点
 deleteWhen=04

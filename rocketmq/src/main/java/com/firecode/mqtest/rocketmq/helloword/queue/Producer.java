@@ -34,7 +34,7 @@ public class Producer {
 	    int size = 1;
 	    for (int i = 0; i < size; i++) {
 		    /**
-		     * @param topic  主题名称（如果没有该主题自动创建，我们在Broker服务端的配置文件里面已近配了）
+		     * @param topic  主题名称（注意：需要手动创建消息主题）
 		     * @param tags   标签（消息过滤使用）
 		     * @param keys   用户自定义的key（一般用作消息的唯一标识，根据业务来，也可以不唯一）
 		     * @param body   消息内容
@@ -42,6 +42,8 @@ public class Producer {
 		    Message message = new Message("helloword_topic", "tagA", "key"+i, ("helloword"+i).getBytes(StandardCharsets.UTF_8));
 		    // 发送消息
 		    SendResult res = producer.send(message);
+	        // oneway发送消息，只要不抛异常就是成功（注意：这种方式发送消息效率最高，就是可靠信稍微差一点），看业务需求使用
+	        //producer.sendOneway(message);
 		    System.err.println("消息发出："+res);
 		}
 	    // 停止生产者
