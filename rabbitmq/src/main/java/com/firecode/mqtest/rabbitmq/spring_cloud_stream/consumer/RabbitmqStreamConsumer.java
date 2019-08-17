@@ -14,7 +14,8 @@ import com.rabbitmq.client.Channel;
 public class RabbitmqStreamConsumer {  
 
     @StreamListener(Barista.INPUT_CHANNEL)  
-    public void receiver(Message<Object> message) throws Exception {  
+    //@SendTo("管道名称")当前这条消息消费完成后，将其返回值发送到某个管道中，供其它消费者消费
+    public String receiver(Message<Object> message) throws Exception {  
 		Channel channel = (com.rabbitmq.client.Channel) message.getHeaders().get(AmqpHeaders.CHANNEL);
 		Long deliveryTag = (Long) message.getHeaders().get(AmqpHeaders.DELIVERY_TAG);
     	System.out.println("Input Stream 1 接受数据：" + message);
@@ -24,5 +25,6 @@ public class RabbitmqStreamConsumer {
 		 * multiple       是否支持批量确认
 		 */
     	channel.basicAck(deliveryTag, false);
+    	return "消费完成了，deliveryTag="+deliveryTag+"的消息";
     }  
 }  
