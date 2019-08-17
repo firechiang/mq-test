@@ -53,6 +53,7 @@ spring:
           binder: rabbit_cluster                        # 绑定集群配置（就是要使用哪个集群配置）
           destination: test.spring.exchange.topic.bean  # 交换机名称
           group: test.spring.queue.topic.bean           # 队列名称 
+          content-type: application/json                # 在控制台看到的消息内容是JSON字符串
         # 消费端管道相关配置
         input_channel:                                  # 消费端管道的key（名称），可以随便起  
           binder: rabbit_cluster                        # 绑定集群配置（就是要使用哪个集群配置）
