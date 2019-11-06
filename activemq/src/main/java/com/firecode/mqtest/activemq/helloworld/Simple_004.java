@@ -2,6 +2,7 @@ package com.firecode.mqtest.activemq.helloworld;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
+import javax.jms.DeliveryMode;
 import javax.jms.Destination;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
@@ -43,6 +44,8 @@ public class Simple_004 {
 				//主题目的地
 				Destination destination = session.createTopic("test_topic");
 				producer = session.createProducer(destination);
+	            // 消息非持久化
+				producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
 				//消息体
 				Message message = session.createTextMessage(content);
 				//发送消息
@@ -84,6 +87,8 @@ public class Simple_004 {
 				Destination destination = session.createTopic("test_topic");
 				consumer = session.createConsumer(destination);
 				Message message = consumer.receive();
+	            // 确认接收， 又开启一个线程，去发送给服务器，按收到消息了（注意：不知道和session.commit()有没有冲突）
+				//message.acknowledge();
 				System.err.println(((TextMessage)message).getText());
 			}catch(Exception e) {
 				e.printStackTrace();

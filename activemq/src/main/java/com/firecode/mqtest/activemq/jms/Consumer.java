@@ -6,6 +6,7 @@ import javax.jms.TextMessage;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.event.TransactionalEventListener;
 
 @Component
 public class Consumer {
@@ -30,6 +31,7 @@ public class Consumer {
      * @param text
      * @return
      */
+    @TransactionalEventListener
     @JmsListener(destination = "simple.queue1",containerFactory="jmsListenerContainerQueue")
     @SendTo("simple.queue2")
     public String reviceQueue1(String text){
