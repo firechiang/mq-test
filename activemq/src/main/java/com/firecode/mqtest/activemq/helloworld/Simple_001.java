@@ -12,6 +12,7 @@ import javax.jms.TextMessage;
 import org.apache.activemq.ActiveMQConnectionFactory;
 /**
  * 主动消费
+ * 注意：ActiviMQ可以使用通配符订阅
  * @author JIANG
  *
  */
@@ -37,9 +38,10 @@ public class Simple_001 {
 				 * 
 				 *   
 				 * acknowledgeMode  
-				 *     Session.AUTO_ACKNOWLEDGE    消息的消费者处理消息后，自动确认，常用，商业开发 （不推荐）
-				 *     Session.CLIENT_ACKNOWLEDGE  客户端手动确认消息
-				 *     Session.DUPS_OK_ACKNOWLEDGE 有副本的客户端手动确认，一个消息可以多次处理，可以降低 session 消耗，可以容忍重复消息时使用   （不推荐）
+				 *     Session.AUTO_ACKNOWLEDGE    消息的消费者处理消息后，自动确认（MQ自动调用message.acknowledge()），常用，商业开发 （不推荐）
+				 *     Session.CLIENT_ACKNOWLEDGE  客户端手动确认消息（手动调用message.acknowledge()了，才不会重发）
+				 *     Session.DUPS_OK_ACKNOWLEDGE 有副本的客户端手动确认（批量确认，有延迟确认的特点ActiviMQ根据内部算法，在收到一定数量的消息进行批量确认），一个消息可以多次处理，可以降低 session 消耗，可以容忍重复消息时使用   （不推荐）
+				 *     Session.SESSION_TRANSACTED  事物消息提交确认（当Session使用事物时，请使用此模式）
 				 */
 				session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 				//消息目的地<p>创建消息目的地参数可以为 null，可在消息发送时指定 消息目的地</p>
