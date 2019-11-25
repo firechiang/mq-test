@@ -1,0 +1,11 @@
+server:
+  port: 8099
+
+spring:  application:    name:  rocketmq-test
+    
+rocketmq:
+  name-server: localhost:9876
+  producer:
+    group: test-queue-group    send-message-timeout: 3000
+    
+  
