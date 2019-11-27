@@ -1,4 +1,4 @@
-package com.firecode.mqtest.rocketmq.spring;
+package com.firecode.mqtest.rocketmq.spring.simple;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;

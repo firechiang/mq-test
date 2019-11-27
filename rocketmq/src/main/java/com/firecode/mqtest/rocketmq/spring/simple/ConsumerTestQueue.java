@@ -1,4 +1,4 @@
-package com.firecode.mqtest.rocketmq.spring;
+package com.firecode.mqtest.rocketmq.spring.simple;
 
 import org.apache.rocketmq.common.message.MessageExt;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
