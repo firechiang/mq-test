@@ -104,7 +104,7 @@ JAVA_OPT="${JAVA_OPT} -server -Xms768m -Xmx768m -Xmn256m"
 ```bash
 JAVA_OPT="${JAVA_OPT} -server -Xms640m -Xmx640m -Xmn256m -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=320m"
 ```
-#### 六、配置 ROCKETMQ_HOME 环境变量（注意：只需要环境变量即可）
+#### 六、配置 ROCKETMQ_HOME 环境变量，Value是RocketMQ所在目录（注意：只需要环境变量即可）
 
 #### 七、启动服务（注意：NameServer相当于ZK的角色）
 ```bash
