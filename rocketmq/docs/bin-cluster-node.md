@@ -127,6 +127,12 @@ flushDiskType=ASYNC_FLUSH
 
 # 拉消息线程池数量
 #pullMessageThreadPoolNums=128
+
+# Netty WorkGroup线程池大小（建议根据服务器CPU数量调整）
+#serverSelectorThreads=4
+
+# Netty 编解码 线程池大小（建议根据服务器CPU数量调整，等于serverSelectorThreads的2倍即可）
+#serverWorkerThreads=8
 ```
 
 #### 五、修改[vi /home/rocketmq-all-4.4.0-bin-release/conf/my-cluater/broker-m2.conf]配置（注意：这是第二个主节点的配置，它对应的机器是server002）
